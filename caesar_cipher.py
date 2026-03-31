@@ -1,7 +1,9 @@
 from typing import Any
 
 
-def encrypt(text: str, key: int, numeri: list) -> str:
+def encrypt(text: str, key: int, numeri: list = None) -> str:
+    if numeri is None:
+        numeri = []
     for car in text:
         numeri.append(ord(car))
         cifra(key, numeri, len(numeri) - 1)  # passa l'indice dell'ultimo elemento
@@ -10,7 +12,7 @@ def encrypt(text: str, key: int, numeri: list) -> str:
    # for carattere in numeri:
         #print(chr(carattere)) #cosi mi stampa la frase in colonna :(
 
-    print( "".join(chr(c) for c in numeri) )#cosi fa un buon output sulla stessa riga (rispettando gli spazi)
+    return "".join(chr(c) for c in numeri) #cosi fa un buon output sulla stessa riga (rispettando gli spazi)
 
 
 def cifra(key: int, numeri: list, idx: int):  # idx è l'indice di aumento
@@ -41,10 +43,9 @@ def main():
         key = int(input("Inserisci la chiave : "))
         numeri = []
         if scelta == 1:
-            encrypt(text, key, numeri)
+            print(encrypt(text, key))
         elif scelta == 2:
-            key = -key #cosi decripta
-            encrypt(text, key, numeri)
+            print(encrypt(text, -key))
         else:
             print("Arrivederci")
 

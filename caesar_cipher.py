@@ -1,5 +1,3 @@
-from typing import Any
-
 
 def encrypt(text: str, key: int, numeri: list = None) -> str:
     if numeri is None:
@@ -9,8 +7,6 @@ def encrypt(text: str, key: int, numeri: list = None) -> str:
         cifra(key, numeri, len(numeri) - 1)  # passa l'indice dell'ultimo elemento
                  #ed essendo che viene ripetuto in un for, decrementa sempre di uno
 
-   # for carattere in numeri:
-        #print(chr(carattere)) #cosi mi stampa la frase in colonna :(
 
     return "".join(chr(c) for c in numeri) #cosi fa un buon output sulla stessa riga (rispettando gli spazi)
 
@@ -41,7 +37,6 @@ def main():
         scelta = int(input("Inserisci il numero di scelta: "))
         text = input("\n\nInserisci testo : ")
         key = int(input("Inserisci la chiave : "))
-        numeri = []
         if scelta == 1:
             print(encrypt(text, key))
         elif scelta == 2:

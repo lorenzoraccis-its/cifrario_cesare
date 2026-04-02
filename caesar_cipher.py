@@ -12,7 +12,10 @@ def encrypt(text: str, key: int, numeri: list = None) -> str:
 
 
 def cifra(key: int, numeri: list, idx: int):  # idx è l'indice di aumento
-    c = chr(numeri[idx])  #in questa funzione c'è il cambio di valore della lettera (in ASCII)
+    c = chr(numeri[idx])
+    if ord(c) > 127:  # fuori da ASCII, quindi i car speciali
+        return
+    #in questa funzione c'è il cambio di valore della lettera (in ASCII)
     if c.isalpha():
         if c.isupper():
             numeri[idx] -= 65

@@ -29,20 +29,24 @@ def main():
     print("Benvenuto nel cifrario di Cesare!")
     scelta=" " #cosi entra nel while
     while scelta != "" : #se si preme INVIO si esce dal loop
-        print("""\n\n
-              1.cifrare\n
-              2.decifrare\n
-              Premi INVIO per uscire\n\n
-                            """)
-        scelta = int(input("Inserisci il numero di scelta: "))
-        text = input("\n\nInserisci testo : ")
-        key = int(input("Inserisci la chiave : "))
-        if scelta == 1:
-            print(encrypt(text, key))
-        elif scelta == 2:
-            print(encrypt(text, -key))
-        else:
-            print("Arrivederci")
+            print("""
+                  1.cifrare\n
+                  2.decifrare\n
+                  Premi INVIO per uscire\n\n
+                                """)
+            scelta = input("Inserisci il numero di scelta: ")
+            if scelta =="": #qua controlla che non sia un "" prima di convertirlo in intero, sennò da errore
+                print("Arrivederci")
+                break
+            scelta = int(scelta)
+            text = input("\nInserisci testo (NO numeri) : ")
+            key = int(input("Inserisci la chiave (numerica) : "))
+            if scelta == 1:
+                print(encrypt(text, key))
+            elif scelta == 2:
+                print(encrypt(text, -key))
+
+
 
 if __name__ == "__main__":
     main()
